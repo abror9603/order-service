@@ -28,6 +28,11 @@ class BaseService {
 		return $this->model->updateOrder($params, $id);
 	}
 
+	public function updateSerStatus($params)
+	{
+		return $this->model->updateRepoStatus($params);
+	}
+
 	public function deleteData(int $id)
 	{
 		return $this->model->deleteOrder($id);

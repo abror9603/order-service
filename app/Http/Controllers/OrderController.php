@@ -60,6 +60,16 @@ class OrderController extends Controller
         : response()->json(["message" => "Can not update order"], 500);
     }
 
+    public function updateStatus(Request $request)
+    {
+        $request->validate([
+            'order_id' => 'required|exists:orders,id',
+            'status' => 'required|string'
+        ]);
+
+        return $this->order->updateSerStatus($request->all());
+    }
+
    
     public function destroy(int $id)
     {

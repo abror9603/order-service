@@ -32,6 +32,15 @@ class BaseRepository{
 		}
 	}
 
+	public function updateRepoStatus($params)
+	{
+		$order = $this->getById($params->order_id);
+        $order->status = $params->status;
+        $order->save();
+
+        return response()->json(['message' => 'Order status updated successfully']);
+	}
+
 	public function deleteOrder(int $id)
 	{
 		$query = $this->getById($id);
